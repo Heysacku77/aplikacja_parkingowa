@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Login – Smart Parking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<header>
+    <div class="header-content">
+        <div class="title-wrapper" style ="margin-left: auto;">
+            <a href="/" class="title-box">Smart Parking</a>
+        </div>
+    </div>
+</header>
+
+<div class="login-container">
+    <h2>Zaloguj się</h2>
+
+  
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash-messages">
+          {% for m in messages %}
+            <p>{{ m }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <form action="{{ url_for('login', next=request.args.get('next')) }}" method="post" class="login-form">
+        <input type="hidden" name="next" value="{{ request.args.get('next', '') }}">
+        <input type="text" name="username" placeholder="Email lub login" required>
+        <input type="password" name="password" placeholder="Hasło" required>
+        <button type="submit">Zaloguj</button>
+    </form>
+
+    <p class="register-link">Nie masz konta? <a href="/register">Zarejestruj się</a></p>
+</div>
+
+</body>
+</html>

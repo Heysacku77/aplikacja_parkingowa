@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Smart Parking{% endblock %}
+
+{% block content %}
+  <style>
+    #map { height: calc(100vh - 70px); }
+    .popup h4 { margin: 0 0 6px; }
+  </style>
+
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class="flash-messages">
+        {% for m in messages %}<p>{{ m }}</p>{% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <div id="map"></div>
+
+  
+  <script id="home-data" type="application/json">
+    {{ { "lat": 50.06143, "lon": 19.93658, "radius": 300 } | tojson }}
+  </script>
+
+  
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="{{ url_for('static', filename='map.js') }}"></script>
+{% endblock %}

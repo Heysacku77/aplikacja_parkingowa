@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Rejestracja – Smart Parking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div></div> 
+            <div class="title-wrapper">
+                <a href="/" class="title-box">Smart Parking</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="register-container">
+        <h2>Załóż konto</h2>
+        <form action="/register" method="post" class="register-form">
+            <input type="text" name="username" placeholder="Login" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Hasło" required>
+            <input type="password" name="confirm_password" placeholder="Powtórz hasło" required>
+            <button type="submit">Zarejestruj się</button>
+        </form>
+        <p class="login-link">Masz już konto? <a href="/login">Zaloguj się</a></p>
+    </div>
+</body>
+</html>
